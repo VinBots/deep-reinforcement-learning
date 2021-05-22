@@ -1,6 +1,6 @@
 
 
-<h1 align="center">
+<h1 align="center" style="background-color:White;">
   <br>
   <a href="https://github.com/VinBots/deep-reinforcement-learning/tree/master/p2_continuous-control"><img src="docs/assets/soft_Q_update.png" alt="continuous control"></a>
 </h1>
