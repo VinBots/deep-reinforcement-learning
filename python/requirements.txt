@@ -8,7 +8,8 @@ docopt
 pyyaml
 protobuf==3.5.2
 grpcio==1.11.0
-torch==0.4.0
 pandas
 scipy
 ipykernel
+#torch==0.4.0 # pip install torch==0.4.1 -f https://download.pytorch.org/whl/torch_stable.html
+

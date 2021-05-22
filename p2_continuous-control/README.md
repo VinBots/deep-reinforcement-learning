@@ -1,28 +1,36 @@
-# Continuous Control - Reacher / Crawler
-
-Please refer to README file for understanding and setting the environment of Reacher and Crawler.
-
-Refer to the following Jupyter notebooks;
-
-* Reacher: Continuous_Control-SAC-Reacher.ipynb
-* Crawler: Crawler/Continuous_Control-SAC-Crawler.ipynb
 
 
-## Background
+<h1 align="center">
+  <br>
+  <a href="https://github.com/VinBots/deep-reinforcement-learning/tree/master/p2_continuous-control"><img src="docs/assets/soft_Q_update.png" alt="continuous control"></a>
+</h1>
 
-After reviewing a few algorithm, I found the SAC (Soft Actor-Critic) algorithm quite fascinating as it addresses, in mathematical terms, the fundamental questions of how to succeed at a task while remaining open to other potentially valid alternatives. This question is core to the exploitation - exploration dilemma. What I found very unusual is how such an algorithm can speed up training and solve the brittleness issues of many determinisitc approaches (like DDPG).
+<h4 align="center">Soft Actor Critic Model for Continuous Control </h4>
+<p align="center">
+  <a href="#about">About</a> •
+  <a href="#results">Results</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#configuration">Configuration</a> •
+  <a href="#references">References</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#going-further">Going Further</a>
+</p>
 
-SAC is also addressing the sample complexity issue: off-policy methods are more sample-efficient, as long as we can keep policy updates within an acceptable range, like in Trust Region Policy Optimization [TRPO] or Proximal Policy Optimization [PPO] methods.
+---
 
-## Soft Actor-Critic (SAC) Algorithm
+<h1 align="center">
+  <br>
+  <a href="https://github.com/VinBots/world_models"><img src="https://user-images.githubusercontent.com/10624937/43851024-320ba930-9aff-11e8-8493-ee547c6af349.gif" width="600" alt="world_models"></a>
+</h1>
+<h5 align="center"> A double-jointed arm moving to target locations.</h2>
 
-The description below is mainly made of notes from the original paper [here](https://arxiv.org/pdf/1812.05905.pdf) and the following documents:
+## About
 
-* [Berkeley implementation](https://github.com/rail-berkeley/softlearning)
-* [Medium](https://towardsdatascience.com/in-depth-review-of-soft-actor-critic-91448aba63d4)
-* [OpenAI - Spinning Up](https://spinningup.openai.com/en/latest/algorithms/sac.html)
+This repository includes an implementation of the  SAC (Soft Actor-Critic) algorithm that proves to be more efficient and robust than many deterministic approaches (like DDPG). SAC is also addressing the sample complexity issue: off-policy methods are more sample-efficient, as long as we can keep policy updates within an acceptable range, like in Trust Region Policy Optimization [TRPO] or Proximal Policy Optimization [PPO] methods.
 
-### Description of SAC
+### Soft Actor-Critic (SAC) Algorithm
+
+#### Description of SAC
 
 * SAC is an off-policy actor-critic algorithm based on the maximum entropy RL framework
 
@@ -41,7 +49,7 @@ Our soft actor-critic algorithm incorporates **three key ingredients**:
 
 SAC is a loop of policy evaluation through Q-value updates of the critic (based on the modified objective including the entropy term) and policy improvement updates (actor). This loop is called a policy iteration.
 
-### Policy Evaluation - soft Q-Update
+#### Policy Evaluation - soft Q-Update
 
 We apply the Bellman operator, augmented by an entropy term
 
@@ -54,33 +62,32 @@ $$V(s_t) = \mathbb E_{a_t -> \pi} [Q(s_t,a_t) - \alpha.log \pi(a_t,s_t)] $$
 We define the following objective policy;
 
 
-![soft_Q_update](Assets/soft_Q_update.png)
+![soft_Q_update](docs/assets/soft_Q_update.png)
 
 Alpha term represents the "entropy temperature," i.e. how much we weight the "randomness" of our policy versus the environment reward.
 
-Alpha can be tuned automatically. Alpha varies according to the magnitude of the rewards (different by task but also durng training. Instead of tuning the temperature manually, we treat it as a constraint by setting a target temperature (another hyperparameter though!). "Our aim is to find a stochastic policy with maximal expected return that satisfies a minimum expected entropy constraint" See page 7 of the paper.
+Alpha can be tuned automatically. Alpha varies according to the magnitude of the rewards (different by task but also during training. Instead of tuning the temperature manually, we treat it as a constraint by setting a target temperature (another hyperparameter though!). "Our aim is to find a stochastic policy with maximal expected return that satisfies a minimum expected entropy constraint" See page 7 of the paper.
 
-### Policy Improvement
+#### Policy Improvement
 
 We update the policy distribution towards the softmax distribution for the current Q function. We want to minimize the distance (“divergence”) between the two distributions. This is accomplished by minimizing the Kullback-Leibler (KL) divergence between the two distributions:
 
-![pi](Assets/soft_policy_improvement.png)
+![pi](docs/assets/soft_policy_improvement.png)
 
 Haarnoja et al. uses the “re-parameterization trick” on the policy output to get a low variance estimator; in particular, we represent the actions as the hyperbolic tangent (tanh) applied to z-values sampled from the mean and log standard deviation outputted by the policy neural network.
 
 **Step by step:**
 
-* We do a forward pass on our netwro to convert a state into the mean, log std of a state
-* We sample an action from a normal distribution parameterized by mean,std
-* We squeeze the action value betwen -1 and 1 with Tanh
+* We do a forward pass on our network to convert a state into the mean, log std of a state
+* We sample an action from a normal distribution parameterized by mean, std
+* We squeeze the action value between -1 and 1 with Tanh
 * We calculate log_pi (see formula below)
 
-![log_pi_SAC](Assets/log_pi_SAC.png)
+![log_pi_SAC](docs/assets/log_pi_SAC.png)
 
 Explanations from the paper: we apply an invertible squashing function (tanh) to the Gaussian samples, and employ the change of variables formula to compute the likelihoods of the bounded actions. In the other words, let u ∈ $R^D$ be a random variable and μ(u|s) the corresponding density with infinite support. Then a = tanh(u), where tanh is applied elementwise, is a random variable with support in (−1, 1).
 
-
-## Hyperparameters and Results
+## Results
 
 ### Network parameters 
 
@@ -126,24 +133,14 @@ The charts below were recorded during training mode.
 
 * Standard SAC with temperature auto-tuning
 
-![learning_SAC](Results/SAC_test_newbuffer50000(22solved).png)
-
+![learning_SAC](monitoring/results/SAC_test_newbuffer50000(22solved).png)
 * SAC with a single soft Q-function
 
-![single_q](Results/SAC_test_singleQ (stopped_232).png)
+ 
+![single_q](monitoring/results/SAC_test_singleQ (stopped_232).png)
 
 
-## Future improvements
-
-Here's a few ideas to explore to improve the current algorithm:
-
-* sample experiences in a more efficient way, e.g. prioritized replay from a continous space.
-* adjust the soft update according to the certainty of the network (low standard deviation of the policy should lead to more stability)
-* teach a new network with a pre-filled buffer of positive experiences from the beginning
-* introduce a target network for the actor
-
-
-## Optional Crawler Project
+#### Crawler Environment
 
 I also implemented the SAC algorithm for the Crawler environment. After a couple of hours of training and very few changes in hyperparameters, the game was solved, which is quite remarkable!
 
@@ -153,9 +150,32 @@ Note that the evaluation should be done by removing stochasticity of the action 
 
 The learning curve is as below:
 
-![Results_chart.png](Crawler/Results_chart.png)
+![Results_chart.png](monitoring/results/crawler_results_chart.png)
 
-You can run the notebook Crawler/Continuous_Control-SAC-Crawler.ipynb to watch about 10 episods in the test mode.
+## Installation
 
-The recorded scores based on the current weights of the network are:
+Please refer to README of the repository and instructions for installing the Reacher and Crawler environments in [env_install.md](env_install.md)
 
+## Configuration
+
+All the parameters are located in `src/Continuous_Control-SAC-Reacher.ipynb`
+
+## References
+
+* Original paper [here](https://arxiv.org/pdf/1812.05905.pdf)
+* [Berkeley implementation](https://github.com/rail-berkeley/softlearning)
+* [Medium](https://towardsdatascience.com/in-depth-review-of-soft-actor-critic-91448aba63d4)
+* [OpenAI - Spinning Up](https://spinningup.openai.com/en/latest/algorithms/sac.html)
+
+## Credits
+
+* Udacity [Deep Reinforcement Learning Nanodegree](https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893) program.  
+
+## Going Further
+
+Here's a few ideas to explore to improve the current algorithm:
+
+* sample experiences in a more efficient way, e.g. prioritized replay from a continuous space.
+* adjust the soft update according to the certainty of the network (low standard deviation of the policy should lead to more stability)
+* teach a new network with a pre-filled buffer of positive experiences from the beginning
+* introduce a target network for the actor
