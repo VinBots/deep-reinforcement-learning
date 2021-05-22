@@ -38,7 +38,7 @@ This repository includes:
 
 * [DQN Navigation](https://github.com/VinBots/deep-reinforcement-learning/tree/master/DQN_navigation): Deep Q-learning Network (simplified version of the famous DeepMind paper on Atari game)
 * [SAC Jointed Arm Continuous Control](https://github.com/VinBots/deep-reinforcement-learning/tree/master/SAC_jointed_arm): Implementation of PPO, DDPG and Soft Actor Critic
-* [MASAC_tennis collaboration](https://github.com/VinBots/MASAC_tennis/): implementation of a Multi-Agent Soft Actor-Critic (MASAC) algorithm where critics are trained centrally but execution of actors is distributed.
+* [MASAC_tennis collaboration](https://github.com/VinBots/deep-reinforcement-learning/tree/master/MASAC_tennis/): implementation of a Multi-Agent Soft Actor-Critic (MASAC) algorithm where critics are trained centrally but execution of actors is distributed.
 
 ### A suite of tutorials for various algorithms in reinforcement learning.  
 
