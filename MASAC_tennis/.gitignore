@@ -1,0 +1,15 @@
+  
+src/.ipynb_checkpoints
+.ipynb_checkpoints
+.DS_Store
+__pycache__/
+*.pth
+old
+testing
+playground
+requirements.in
+.vscode
+soccer
+Info.plist
+unity-environment.log
+Tennis.app
