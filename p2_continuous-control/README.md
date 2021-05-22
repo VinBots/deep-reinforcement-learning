@@ -131,14 +131,14 @@ Note that evaluation should be done after removing stochasticity of the action c
 
 The charts below were recorded during training mode.
 
-* Standard SAC with temperature auto-tuning
+**Standard SAC with temperature auto-tuning**
 
+![learning_SAC](monitoring/results/SAC_test_newbuffer50000(22solved).png )
 
-![learning_SAC](monitoring/Results/SAC_test_newbuffer50000(22solved).png )
-* SAC with a single soft Q-function
+**SAC with a single soft Q-function**
 
- 
-![single_q](monitoring/results/SAC_test_singleQ (stopped_232).png)
+![single_q](monitoring/results/SAC_test_singleQ(stopped_232).png)
+
 
 
 
