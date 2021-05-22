@@ -22,7 +22,7 @@
   <br>
   <a href="https://github.com/VinBots/deep-reinforcement-learning/tree/master/p1_navigation"><img src="https://user-images.githubusercontent.com/10624937/42135619-d90f2f28-7d12-11e8-8823-82b970a54d7e.gif" alt="banana collection"></a>
 </h1>
-<h5 align="center">Task</h2>
+<h5 align="center">Learning to Navigate and Collect Bananas</h2>
 
 ## About
 
