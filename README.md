@@ -8,7 +8,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://github.com/VinBots/"><img src="logo_drlnd.jpg" width="200" height="200" alt="DRL"></a>
+  <a href="https://github.com/VinBots/"><img src="logo_drlnd.jpg" alt="DRL"></a>
 </h1>
 
 <h4 align="center">Initiation to Deep Reinforcement Learning </h4>
