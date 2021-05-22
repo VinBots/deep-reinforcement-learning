@@ -36,9 +36,9 @@ This repository includes:
 
 ### 3 projects
 
-* [Navigation](https://github.com/VinBots/deep-reinforcement-learning/tree/master/p1_navigation): xxx
-* [Continuous Control](https://github.com/VinBots/deep-reinforcement-learning/tree/master/p2_continuous-control): xxx
-* [Collaboration and Competition](https://github.com/VinBots/deep-reinforcement-learning/tree/master/p3_collab-compet): xxx 
+* [Navigation](https://github.com/VinBots/deep-reinforcement-learning/tree/master/p1_navigation): Deep Q-learning Network (simplified version of the famous DeepMind paper on Atari game)
+* [Continuous Control](https://github.com/VinBots/deep-reinforcement-learning/tree/master/p2_continuous-control): Implementation of PPO, DDPG and Soft Actor Critic
+* [Collaboration and Competition](https://github.com/VinBots/Multi-Agent_Soft_Actor_Critic/): implementation of a Multi-Agent Soft Actor-Critic (MASAC) algorithm where critics are trained centrally but execution of actors is distributed.
 
 ### A suite of tutorials for various algorithms in reinforcement learning.  
 
