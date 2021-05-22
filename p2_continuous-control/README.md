@@ -1,9 +1,7 @@
 
-
-<h1 align="center" style="background-color:Gray;">
-
+<h1 align="center">
   <br>
-  <a href="https://github.com/VinBots/deep-reinforcement-learning/tree/master/p2_continuous-control"><img src="docs/assets/soft_Q_update.png" alt="continuous control"></a>
+  <a href="https://github.com/VinBots/deep-reinforcement-learning/tree/master/p2_continuous-control"><img src="docs/assets/soft_Q_update.png" alt="continuous control" style="background-color:Gray;"></a>
 </h1>
 
 <h4 align="center">Soft Actor Critic Model for Continuous Control </h4>
