@@ -61,7 +61,7 @@ $$V(s_t) = \mathbb E_{a_t -> \pi} [Q(s_t,a_t) - \alpha.log \pi(a_t,s_t)] $$
 We define the following objective policy;
 
 
-![soft_Q_update](docs/assets/soft_Q_update.png)
+![soft_Q_update](docs/assets/soft_Q_update.jpg)
 
 Alpha term represents the "entropy temperature," i.e. how much we weight the "randomness" of our policy versus the environment reward.
 
@@ -71,7 +71,7 @@ Alpha can be tuned automatically. Alpha varies according to the magnitude of the
 
 We update the policy distribution towards the softmax distribution for the current Q function. We want to minimize the distance (“divergence”) between the two distributions. This is accomplished by minimizing the Kullback-Leibler (KL) divergence between the two distributions:
 
-![pi](docs/assets/soft_policy_improvement.png)
+![pi](docs/assets/soft_policy_improvement.jpg)
 
 Haarnoja et al. uses the “re-parameterization trick” on the policy output to get a low variance estimator; in particular, we represent the actions as the hyperbolic tangent (tanh) applied to z-values sampled from the mean and log standard deviation outputted by the policy neural network.
 
@@ -82,7 +82,7 @@ Haarnoja et al. uses the “re-parameterization trick” on the policy output to
 * We squeeze the action value between -1 and 1 with Tanh
 * We calculate log_pi (see formula below)
 
-![log_pi_SAC](docs/assets/log_pi_SAC.png)
+![log_pi_SAC](docs/assets/log_pi_SAC.jpg)
 
 Explanations from the paper: we apply an invertible squashing function (tanh) to the Gaussian samples, and employ the change of variables formula to compute the likelihoods of the bounded actions. In the other words, let u ∈ $R^D$ be a random variable and μ(u|s) the corresponding density with infinite support. Then a = tanh(u), where tanh is applied elementwise, is a random variable with support in (−1, 1).
 
