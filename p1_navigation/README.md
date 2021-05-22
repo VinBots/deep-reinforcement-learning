@@ -2,7 +2,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://github.com/VinBots/deep-reinforcement-learning/tree/master/p1_navigation"><img src="docs/assets/Q_learning_update_rule.jpg" width="300" alt="DQN"></a>
+  <a href="https://github.com/VinBots/deep-reinforcement-learning/tree/master/p1_navigation"><img src="docs/assets/Q_learning_update_rule.jpg" width="500" alt="DQN"></a>
 </h1>
 
 <h4 align="center">Deep Q-Learning Network (DQN) Algorithm project </h4>
